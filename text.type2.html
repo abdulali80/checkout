@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Character Count and Total Length</h1>
+
+    <h4>if basit ali</h4>
+    
+    <input type="text" id="textInput" placeholder="Enter text">
+    <button onclick="calculate()">sumbit</button>
+    <div id="demo"></div>
+
+    <script>
+
+        function calculate() {
+            let text = document.getElementById('textInput').value;
+            let counts = {
+                a: 0,
+                b: 0,
+                c: 0,
+                d: 0,
+                s: 0,
+                l: 0,
+                i: 0,
+                t: 0
+            };
+
+            let length = text.length;
+        
+            for (let length of text) {
+                if (counts.hasOwnProperty(length)) {
+                    counts[length]++;
+                }
+            }
+
+             functions = '';
+            for (let length in counts) {
+                functions += `${length} = ${counts[length]}<br>`;
+            }
+            functions += `Total length = ${length}<br>`;
+
+            document.getElementById("demo").innerHTML = functions;
+        }
+    </script>
+</body>
+</html>

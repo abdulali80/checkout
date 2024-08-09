@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+ <title>Character Count</title>
+<body>
+    <h1>Character Count</h1>
+
+    <h4>if basit ali</h4>
+    <div id="demo"></div>
+
+    <script>
+        function countCharacters(text) {
+            let counts = {
+                a: 0,
+                b: 0,
+                c: 0,
+                s: 0,
+                l: 0,
+                i: 0,
+                t: 0
+            };
+
+            for (let char of text) {
+                
+                if (counts.hasOwnProperty(char)) {
+                    counts[char]++;
+                }
+            }
+
+            return counts;
+        }
+        let text = "basit ali";
+        
+        let characterCounts = countCharacters(text);
+        let output = '';
+        for (let char in characterCounts) {
+            output += `${char} = ${characterCounts[char]}<br>`;
+        }
+        document.getElementById("demo").innerHTML = output;
+    </script>
+</body>
+</html>
