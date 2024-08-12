@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <title>Name Length Calculator</title>
+<body>
+
+    <h2>Total Length is 5</h2>
+    
+<p>create a variable named username ie. basit . The output will be</p>
+
+    <form action="/action_page.php">
+        <select id="nameSelect">
+            <option value="Ali">Ali</option>
+            <option value="Basit">Basit</option>
+        </select>
+        <input type="text" id="fname" name="fname" value="Basit"><br>
+    </form> 
+    <p id="demo">Length: 0</p>
+
+    <script>
+        function updateLength() {
+            let selectedName = document.getElementById('nameSelect').value;
+            let inputName = document.getElementById('fname').value;
+            let nameToDisplay = inputName.trim() !== '' ? inputName : selectedName;
+            let length = nameToDisplay.length;
+
+            document.getElementById('demo').innerHTML = `Length: ${length}`;
+        }
+
+        document.getElementById('nameSelect').addEventListener('change', updateLength);
+        document.getElementById('fname').addEventListener('input', updateLength);
+        updateLength();
+    </script>
+</body>
+</html>

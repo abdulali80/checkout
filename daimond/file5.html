@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <title>Circle Pattern</title>
+    
+<body>
+
+    <h2>Circle Pattern</h2>
+    <div>
+        <label for="radius">Enter radius: </label>
+        <input type="number" id="radius" value="5" min="1">
+        <button onclick="generateCircle()">Generate Circle</button>
+    </div>
+
+    <pre id="pattern"></pre>
+
+    <script>
+        function generateCircle() {
+            const radius = parseInt(document.getElementById('radius').value);
+            let output = "";
+            const diameter = radius * 2;
+
+            for (let i = 0; i <= diameter; i++) {
+                for (let j = 0; j <= diameter; j++) {
+                    const distance = Math.sqrt((i - radius) ** 2 + (j - radius) ** 2);
+
+                    if (distance < radius) {
+                        output += "* ";
+                    } else {
+                        output += "  ";
+                    }
+                }
+                output += "\n";
+            }
+            document.getElementById('pattern').textContent = output;
+        }
+    </script>
+
+</body>
+</html>
+

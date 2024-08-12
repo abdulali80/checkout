@@ -24,11 +24,11 @@
                 t: 0
             };
 
-            let length = text.length;
+            let lengths = text.length;
         
-            for (let length of text) {
-                if (counts.hasOwnProperty(length)) {
-                    counts[length]++;
+            for (let lengths of text) {
+                if (counts.hasOwnProperty(lengths)) {
+                    counts[lengths]++;
                 }
             }
 
@@ -36,7 +36,7 @@
             for (let length in counts) {
                 functions += `${length} = ${counts[length]}<br>`;
             }
-            functions += `Total length = ${length}<br>`;
+            functions += `Total length = ${lengths}<br>`;
 
             document.getElementById("demo").innerHTML = functions;
         }

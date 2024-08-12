@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sum of Digits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Sum of Digits</h2>
+    <div>
+        <label for="numberInput">Enter a number: </label>
+        <input type="text" id="numberInput">
+        <button onclick="sumDigits()">Calculate Digits</button>
+    </div>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function sumDigits() {
+            const number = document.getElementById('numberInput').value;
+            let sum = 0;
+
+            for (let i = 0; i < number.length; i++) {
+                sum += parseInt(number[i]);
+            }
+            document.getElementById('result').textContent = `The sum of the digits is: ${sum}`;
+        }
+    </script>
+
+</body>
+</html>

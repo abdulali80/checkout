@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+    <title>Square Pattern</title>
+<body>
+
+    <h2>Square Pattern</h2>
+    <div>
+        <label for="size">Enter size of the square: </label>
+        <input type="number" id="size" value="5" min="1">
+        <button onclick="generateSquare()">Generate Square</button>
+    </div>
+
+    <pre id="pattern"></pre>
+
+    <script>
+        function generateSquare() {
+            const size = parseInt(document.getElementById('size').value);
+            let output = "";
+
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j < size; j++) {
+                    output += "* ";
+                }
+                output += "\n";
+            }
+            document.getElementById('pattern').textContent = output;
+        }
+    </script>
+
+</body>
+</html>
+

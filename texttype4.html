@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <title>Character Counter</title>
+   
+    <h1>Character Count and Total Length</h1>
+
+    <h4>if basit ali</h4>
+
+<body>
+    <input type="text" id="textInput" placeholder="Enter text here">
+
+    <table>
+        <tbody id="charCounts">
+        </tbody>
+    </table>
+
+    <p id="totalLength">Total Length: 0</p>
+
+    <script>
+        function countCharacters(text) {
+            let counts = {};
+            for (let charCode = 'a'.charCodeAt(0); charCode <= 'z'.charCodeAt(0); charCode++) {
+                counts[String.fromCharCode(charCode)] = 0;
+            }
+            for (let char of text) {
+                let lowerChar = char.toLowerCase();
+                if (counts.hasOwnProperty(lowerChar)) {
+                    counts[lowerChar]++;
+                }
+            }
+            return counts;
+        }
+
+        function updateTable() {
+            let text = document.getElementById('textInput').value;
+            let characterCounts = countCharacters(text);
+
+            document.getElementById('totalLength').innerText = `Total Length: ${text.length}`;
+
+            let tableBody = document.getElementById('charCounts');
+            tableBody.innerHTML = '';
+            for (let char in characterCounts) {
+                if (characterCounts[char] > 0) {
+                    let row = document.createElement('tr');
+                    row.innerHTML = `<td class="char-cell">${char.toUpperCase()}</td><td class="char-cell">
+                    ${characterCounts[char]}</td>`;
+                    tableBody.appendChild(row);
+                }
+            }
+        }
+        document.getElementById('textInput').addEventListener('input', updateTable);
+    </script>
+</body>
+</html>
