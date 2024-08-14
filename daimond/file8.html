@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Palindrome Checker</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <h1>Palindrome Word Checker</h1>
+
+    <p><b>A Palindrome Checker determines if a given number reads the same forward and backward.</b></p>
+  
+
+    <div>
+        <label for="numberInput">Enter a Word:</label>
+        <input type="text" id="numberInput">
+        <button id="checkButton">Check Palindrome</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function isPalindrome() {
+            let number = $('#numberInput').val(); 
+            let length = 0;
+
+            while (number[length] !== undefined) {
+                length++;
+            }
+
+            let start = 0;
+            let end = length - 1;
+            let isPalindrome = true;
+        
+           
+            while (start < end) {
+                if (number[start] !== number[end]) {
+                    isPalindrome = false; 
+                    break;
+                }
+                start++; 
+                end--;
+            }
+            if (isPalindrome) {
+                $('#result').text('The number is a palindrome.');
+            } else {
+                $('#result').text('The number is not a palindrome.');
+            }
+        }
+        $('#checkButton').click(isPalindrome);
+    </script>
+</body>
+</html>
