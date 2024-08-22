@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Total Amount and Multi-Dimensional Array</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <h1>Total Amount and Multi-Dimensional Array</h1>
+    <h2>product_id=1!!price=5!!quantity=8@@product_id=2!!price=16!!quantity=100</h2>
+    <p><b>Create a multi-dimensional array: first item is product id, second item is total amount.</b></p>
+
+    <label for="productString">Enter Product String:</label><br>
+    <input type="text" id="productString" value="product_id=1!!price=5!!quantity=8@@product_id=2!!price=16!!quantity=100" style="width: 400px;"><br><br>
+    <button id="calculateBtn">Calculate Total and Create Array</button>
+
+    <p id="result"></p>
+
+    <script>
+        $(document).ready(function() {
+            $('#calculateBtn').click(function() {
+                let productString = $('#productString').val();
+                let products = productString.split('@@');
+                
+                let totalAmount = 0;
+                let productArray = [];
+
+                for(let i = 0; i < products.length; i++) {
+                    let details = products[i].split('!!');
+                    let productId = 0;
+                    let price = 0;
+                    let quantity = 0;
+                    
+                    for(let j = 0; j < details.length; j++) {
+                        let [key, value] = details[j].split('=');
+                        if(key === 'product_id') {
+                            productId = +value; 
+                        }
+                        if(key === 'price') {
+                            price = +value; 
+                        }
+                        if(key === 'quantity') {
+                            quantity = +value; 
+                        }
+                    }
+                    
+                    let productTotal = price * quantity;
+                    totalAmount += productTotal;
+                    productArray.push([productId, productTotal]);
+                }
+                let arrayRepresentation = productArray.map(item => `[${item[0]}, ${item[1]}]`).join(',');
+
+                $('#result').html(
+                    "1. Total Amount is " + totalAmount + 
+                    "<br>2. Multi-dimensional Array: [" + arrayRepresentation + "]" +
+                    "<br>3. Descriptive Array: <br>" + productArray.map(item => `Product ${item[0]}: Total ${item[1]}`).join('<br>')
+                );
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+

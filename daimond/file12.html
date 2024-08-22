@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Total Amount Calculation</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+   <h1>Total Amount Calculation</h1>
+   <p><b>product_id=1!!price=5!!quantity=8@@product_id=2!!price=16!!quantity=100</b></p>
+
+</head>
+<body>
+
+    <label for="productString">Enter Product String:</label><br>
+    <input type="text" id="productString" value="product_id=1!!price=5!!quantity=8@@product_id=2!!price=16!!quantity=100" style="width: 400px;"><br><br>
+
+    <button id="calculateBtn">Calculate Total Amount</button>
+
+    <p id="result"></p>
+
+    <script>
+        $(document).ready(function() {
+            $('#calculateBtn').click(function() {
+                let productString = $('#productString').val();
+                let products = productString.split('@@');
+                let totalAmount = 0;
+
+                for(let i = 0; i < products.length; i++) {
+                    let details = products[i].split('!!');
+                    
+                    let price = 0;
+                    let quantity = 0;
+                    
+                    for(let j = 0; j < details.length; j++) {
+                        let [key, value] = details[j].split('=');
+                        if(key === 'price') {
+                            price = parseFloat(value);
+                        }
+                        if(key === 'quantity') {
+                            quantity = parseInt(value);
+                        }
+                    }
+                    totalAmount += price * quantity;
+                }
+                $('#result').text("1. Total Amount is " + totalAmount);
+            });
+        });
+    </script>
+
+</body>
+</html>

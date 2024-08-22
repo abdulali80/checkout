@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Swap Values</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <h1>Swap of Digits</h1>
+    <p><b>swap two values without using third variable </b></p>
+</head>
+<body>
+    <label for="valueA">Value of a:</label>
+    <input type="number" id="valueA" value="10"><br><br>
+
+    <label for="valueB">Value of b:</label>
+    <input type="number" id="valueB" value="5"><br><br>
+    <button id="swapBtn">Swap Values</button>
+
+    <p id="result"></p>
+
+    <script>
+        $(document).ready(function() {
+            $('#swapBtn').click(function() {
+                let a = parseInt($('#valueA').val());
+                let b = parseInt($('#valueB').val());
+
+                $('#result').text("Before swap: a = " + a + ", b = " + b);
+                a = a + b; 
+                b = a - b; 
+                a = a - b;
+            
+                $('#valueA').val(a);
+                $('#valueB').val(b);
+                $('#result').append("<br>After swap: a = " + a + ", b = " + b);
+            });
+        });
+    </script>
+
+</body>
+</html>
+
